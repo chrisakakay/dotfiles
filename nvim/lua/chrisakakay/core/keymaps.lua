@@ -14,3 +14,8 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+
+-- project management
+keymap.set("n", "<leader>pp", "<cmd>Ex<CR>", { desc = "Show file navigator" })
+keymap.set("n", "<leader>pw", "<cmd>cd D:/CODE/WORK<CR> | <cmd>Ex<CR>", { desc = "Go to work projects" })
+keymap.set("n", "<leader>pn", "<cmd>cd D:/CODE/NOTWORK<CR> | <cmd>Ex<CR>", { desc = "Go to notwork projects" })

@@ -35,66 +35,68 @@ local function colorize(_header, _header_color_map, _colors)
   return colorized
 end
 
+local header = {
+  '   █████          ███  █████████████████████████████████████████████████     ',
+  ' ███████████████████████████████████████████████████████████████████████████ ',
+  '█████████████████████████████████████████████████████████████████████████████',
+  '█████████████████████████████████████████████████████████████████████████████',
+  '█████████████████████████████████████████████████████████████████████████████',
+  '█████████████████████████████████████████████████████████████████████████████',
+  ' ████████████████████████████████████████████████████████████████████████████',
+  ' ███████████████████████████████████████████████████████████████████████████ ',
+  ' ███████████████████████████████████████████████████████████████████████████ ',
+  ' ███████████████████████████████████████████████████████████████████████████ ',
+  ' ███████████████████████████████████████████████████████████████████████████ ',
+  ' ███████████████████████████████████████████████████████████████████████████ ',
+  '  ██████████████████████████████████████████████████████████████████████████ ',
+  '  ██████████████████████████████████████████████████████████████████████████ ',
+  '  ███████████████████████████████████████████████████████████████████████████',
+  ' ████████████████████████████████████████████████████████████████████████████',
+  ' ████████████████████████████████████████████████████████████████████████████',
+  ' ████████████████████████████████████████████████████████████████████████████',
+  '  ██████████████████████████████████████████████████████████████████████████ ',
+  '   █████████████████████████████████████████     ██████████████    ████████  ',
+}
+
+local color_map = {
+  '---BBBBB----------BBB--BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB-----',
+  '-BBBYYYYBBBBBBBBBB...BB..........BBDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBPPBBBB-',
+  'BBBYYYYYYYYYYBPBB................BDDDPPPPBPPPBBBBBBBBBBBBBBBBBBBBBBPPBBPPPPBB',
+  'BBBYYYYYYYYYYYBB..................BBPPPPPPPBB......................BBPPPPPPBB',
+  'BBBYYYYYYYYYYYYYBBBBBBBB............BBPPPPB..BBB..B...BBB.BBB.B..B...BPPPPPBB',
+  'BBBYYYYYYYYYYYYYYYYYYYYYBB...BBBB....BPPPB...B..B.B...B...B...B..B....BPPPPBB',
+  '-BBYYYYYYYYYYYYYYBBBBBBYYYBBB....B...BDPBB...BBB..B...BBB.BBB.BBBB.....BPPBBB',
+  '-BBBYYYYYYYYYYYBB......BBYYYB.BB.B.BBDDDB....B..B.B...B...B...B..B.....BPPBB-',
+  '-BBBB...YYYYYYB.....BBB..BBYB....B.BDDDDBB...BBB..BBB.BBB.BBB.B..B...BBPPPBB-',
+  '-BBPB....YYYYYBB........BBBBBBBBB.BDDDBB...........................BBPPPPPBB-',
+  '-BBPPB..........BBBBBBBBB..B....B..BBDDBBBBBBBBBBB...........BBBBBBPPPPPPPBB-',
+  '-BBBBB...........BB..BB.BBBBB...B....BDDPPPPPPPPPPBBBBBBBBBBBPPPPPPPPPPPPPBB-',
+  '--BB..............B.BBBBBBBBBB..B..BBBDDDPPPPBPPPPPPPPPPPPPPPPPPBBBPPPPPPPBB-',
+  '--BBB............B----------B..B..BDDDDDDPPPBBBPPPPPPPPPPPPPPPPPPBPPPPPPPPBB-',
+  '--BBPB..........B.BBBBBBBBBB..B..BDDDDDDDPPPPBPPPPPPPPPPPPPPPPPPPPPPPPPPPPBBB',
+  '-BBPPPBBB..................BBB...BDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBB',
+  '-BBPPPPPPBBBB......BBBBBBBBDDDBBBDDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBB',
+  '-BBPPPPPPPPBBBBBBBB..BGGGGBDDDDDPDDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBB',
+  '--BBPPPPPPBBGGGGGGGBBGGGGGGBDDDDPPPPPPPPPPPPBBBBBPPPPPPPPPPPPPPBBBBPPPPPPPBB-',
+  '---BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB-----BBBBBBBBBBBBBB----BBBBBBBB--',
+}
+
+local color_codes = {
+  ['-'] = { fg = "#bf616a" }, -- Empty (Red)
+  ['B'] = { fg = "#3b4252" },  -- Black
+  ['G'] = { fg = "#434c5e" },  -- Gray (kind of)
+  ['.'] = { fg = "#d8dee9" },  -- White
+  ['Y'] = { fg = "#ebcb8b" }, -- Yellow
+  ['P'] = { fg = "#b48ead" }, -- Puple
+  ['D'] = { fg = "#5e81ac" }, -- Dark purple
+}
+
 return {
   "goolord/alpha-nvim",
   event = "VimEnter",
   config = function()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
-
-    local header = {
-      '   █████          ███  █████████████████████████████████████████████████     ',
-      ' ███████████████████████████████████████████████████████████████████████████ ',
-      '█████████████████████████████████████████████████████████████████████████████',
-      '█████████████████████████████████████████████████████████████████████████████',
-      '█████████████████████████████████████████████████████████████████████████████',
-      '█████████████████████████████████████████████████████████████████████████████',
-      ' ████████████████████████████████████████████████████████████████████████████',
-      ' ███████████████████████████████████████████████████████████████████████████ ',
-      ' ███████████████████████████████████████████████████████████████████████████ ',
-      ' ███████████████████████████████████████████████████████████████████████████ ',
-      ' ███████████████████████████████████████████████████████████████████████████ ',
-      ' ███████████████████████████████████████████████████████████████████████████ ',
-      '  ██████████████████████████████████████████████████████████████████████████ ',
-      '  ██████████████████████████████████████████████████████████████████████████ ',
-      '  ███████████████████████████████████████████████████████████████████████████',
-      ' ████████████████████████████████████████████████████████████████████████████',
-      ' ████████████████████████████████████████████████████████████████████████████',
-      ' ████████████████████████████████████████████████████████████████████████████',
-      '  ██████████████████████████████████████████████████████████████████████████ ',
-      '   █████████████████████████████████████████     ██████████████    ████████  ',
-    }
-    local color_map = {
-      '---BBBBB----------BBB--BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB-----',
-      '-BBBYYYYBBBBBBBBBB...BB..........BBDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBPPBBBB-',
-      'BBBYYYYYYYYYYBPBB................BDDDPPPPBPPPBBBBBBBBBBBBBBBBBBBBBBPPBBPPPPBB',
-      'BBBYYYYYYYYYYYBB..................BBPPPPPPPBB......................BBPPPPPPBB',
-      'BBBYYYYYYYYYYYYYBBBBBBBB............BBPPPPB..BBB..B...BBB.BBB.B..B...BPPPPPBB',
-      'BBBYYYYYYYYYYYYYYYYYYYYYBB...BBBB....BPPPB...B..B.B...B...B...B..B....BPPPPBB',
-      '-BBYYYYYYYYYYYYYYBBBBBBYYYBBB....B...BDPBB...BBB..B...BBB.BBB.BBBB.....BPPBBB',
-      '-BBBYYYYYYYYYYYBB......BBYYYB.BB.B.BBDDDB....B..B.B...B...B...B..B.....BPPBB-',
-      '-BBBB...YYYYYYB.....BBB..BBYB....B.BDDDDBB...BBB..BBB.BBB.BBB.B..B...BBPPPBB-',
-      '-BBPB....YYYYYBB........BBBBBBBBB.BDDDBB...........................BBPPPPPBB-',
-      '-BBPPB..........BBBBBBBBB..B....B..BBDDBBBBBBBBBBB...........BBBBBBPPPPPPPBB-',
-      '-BBBBB...........BB..BB.BBBBB...B....BDDPPPPPPPPPPBBBBBBBBBBBPPPPPPPPPPPPPBB-',
-      '--BB..............B.BBBBBBBBBB..B..BBBDDDPPPPBPPPPPPPPPPPPPPPPPPBBBPPPPPPPBB-',
-      '--BBB............B----------B..B..BDDDDDDPPPBBBPPPPPPPPPPPPPPPPPPBPPPPPPPPBB-',
-      '--BBPB..........B.BBBBBBBBBB..B..BDDDDDDDPPPPBPPPPPPPPPPPPPPPPPPPPPPPPPPPPBBB',
-      '-BBPPPBBB..................BBB...BDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBB',
-      '-BBPPPPPPBBBB......BBBBBBBBDDDBBBDDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBB',
-      '-BBPPPPPPPPBBBBBBBB..BGGGGBDDDDDPDDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPBB',
-      '--BBPPPPPPBBGGGGGGGBBGGGGGGBDDDDPPPPPPPPPPPPBBBBBPPPPPPPPPPPPPPBBBBPPPPPPPBB-',
-      '---BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB-----BBBBBBBBBBBBBB----BBBBBBBB--',
-    }
-    local color_codes = {
-      ['-'] = { fg = "#bf616a" }, -- Empty (Red)
-      ['B'] = { fg = "#3b4252" },  -- Black
-      ['G'] = { fg = "#434c5e" },  -- Gray (kind of)
-      ['.'] = { fg = "#d8dee9" },  -- White
-      ['Y'] = { fg = "#ebcb8b" }, -- Yellow
-      ['P'] = { fg = "#b48ead" }, -- Puple
-      ['D'] = { fg = "#5e81ac" }, -- Dark purple
-    }
 
     -- dashboard.section.header.val = {}
     dashboard.section.header.val = header
@@ -108,6 +110,9 @@ return {
       dashboard.button("SPC ff", "> Find file", "<cmd>Telescope find_files<CR>"),
       dashboard.button("SPC fr", "> Recent", "<cmd>Telescope oldfiles<CR>"),
       dashboard.button("SPC wr", "> Restore session", "<cmd>SessionRestore<CR>"),
+      dashboard.button("SPC pw", "> Go to work projects", "<cmd>cd D:/CODE/WORK<CR><cmd>Ex<CR>"),
+
+
       dashboard.button("q", "> Quit", "<cmd>qa<CR>"),
     }
 
