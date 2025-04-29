@@ -19,3 +19,18 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 keymap.set("n", "<leader>pp", "<cmd>Ex<CR>", { desc = "Show file navigator" })
 keymap.set("n", "<leader>pw", "<cmd>cd D:/CODE/WORK<CR> | <cmd>Ex<CR>", { desc = "Go to work projects" })
 keymap.set("n", "<leader>pn", "<cmd>cd D:/CODE/NOTWORK<CR> | <cmd>Ex<CR>", { desc = "Go to notwork projects" })
+
+local nore = { noremap = true, silent = true }
+
+-- windows style keybinds
+keymap.set("n", "<C-s>", ":w<Enter>", nore)
+keymap.set("i", "<C-s>", "<Esc>:w<CR>a", nore)
+
+keymap.set("n", "<C-x>", ":wq<Enter>", nore)
+keymap.set("i", "<C-x>", "<Esc>:wq<Enter>", nore)
+
+keymap.set("n", "<S-Left>", "v<Left>", nore)
+keymap.set("n", "<S-Right>", "v<Right>", nore)
+
+keymap.set("v", "<C-c>", '"+y', nore)
+keymap.set("v", "<C-v>", '"+p', nore)
