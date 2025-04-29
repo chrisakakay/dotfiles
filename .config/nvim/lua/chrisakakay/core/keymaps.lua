@@ -16,9 +16,7 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- project management
-keymap.set("n", "<leader>pp", "<cmd>Ex<CR>", { desc = "Show file navigator" })
-keymap.set("n", "<leader>pw", "<cmd>cd D:/CODE/WORK<CR> | <cmd>Ex<CR>", { desc = "Go to work projects" })
-keymap.set("n", "<leader>pn", "<cmd>cd D:/CODE/NOTWORK<CR> | <cmd>Ex<CR>", { desc = "Go to notwork projects" })
+-- keymap.set("n", "<leader>pp", "<cmd>Ex<CR>", { desc = "Show file navigator" })
 
 local nore = { noremap = true, silent = true }
 

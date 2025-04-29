@@ -110,7 +110,7 @@ return {
       dashboard.button("SPC ff", "> Find file", "<cmd>Telescope find_files<CR>"),
       dashboard.button("SPC fr", "> Recent", "<cmd>Telescope oldfiles<CR>"),
       dashboard.button("SPC wr", "> Restore session", "<cmd>SessionRestore<CR>"),
-      dashboard.button("SPC pw", "> Go to work projects", "<cmd>cd D:/CODE/WORK<CR><cmd>Ex<CR>"),
+      dashboard.button("SPC pp", "> Change project directory", "<cmd>SPM<CR>"),
       dashboard.button("q", "> Quit", "<cmd>qa<CR>"),
     }
 
