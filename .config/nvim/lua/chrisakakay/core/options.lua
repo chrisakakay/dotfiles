@@ -31,3 +31,6 @@ opt.clipboard:append("unnamedplus")
 -- split
 opt.splitright = true
 opt.splitbelow = true
+
+-- etc
+vim.o.pumheight = 15
