@@ -31,6 +31,11 @@ require("lazy").setup({
     colorscheme = { "nightfly" }
   },
   checker = {
-    enabled = true
+    enabled = true,
+    notify = false,
+  },
+  change_detection = {
+    enabled = true,
+    notify = true,
   },
 })

@@ -4,7 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
-    "nvim-tree/nvim-web-devicons",
+    -- "nvim-tree/nvim-web-devicons",
   },
   config = function()
     local telescope = require("telescope")
@@ -12,14 +12,15 @@ return {
 
     telescope.setup({
       defaults = {
-        path_display = "smart",
+        path_display = { shorten = 15 },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           }
-        }
+        },
+        file_ignore_patterns = { ".git", ".cache", "node_modules", "dist" },
       }
     })
 

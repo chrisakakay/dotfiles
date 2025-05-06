@@ -6,8 +6,10 @@ return {
   config = function()
     require('spm').setup({
       projects = {
-        { name = "fusion-frontend", path = "D:/CODE/WORK/fusion-frontend" },
         { name = "dotfiles", path = "D:/CODE/NOTWORK/dotfiles" },
+        { name = "nvimconfig", path = os.getenv("LOCALAPPDATA") .. "/nvim" },
+        { name = "spm.nvim", path = "D:/CODE/NOTWORK/spm.nvim" },
+        { name = "fusion-frontend", path = "D:/CODE/WORK/fusion-frontend" },
       }
     })
 
