@@ -7,9 +7,11 @@ return {
     require('spm').setup({
       projects = {
         { name = "dotfiles", path = "D:/CODE/NOTWORK/dotfiles" },
+        { name = "fusion-frontend", path = "D:/CODE/WORK/fusion-frontend" },
+        { name = "interpreter-zig", path = "D:/CODE/NOTWORK/codecrafters/codecrafters-interpreter-zig" },
         { name = "nvimconfig", path = os.getenv("LOCALAPPDATA") .. "/nvim" },
         { name = "spm.nvim", path = "D:/CODE/NOTWORK/spm.nvim" },
-        { name = "fusion-frontend", path = "D:/CODE/WORK/fusion-frontend" },
+        { name = "zig-game-proto", path = "D:/CODE/NOTWORK/zig-game-proto" },
       }
     })
 
