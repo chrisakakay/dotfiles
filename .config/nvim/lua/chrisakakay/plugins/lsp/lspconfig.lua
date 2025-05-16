@@ -4,13 +4,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
-    local lspconfig = require("lspconfig")
-    local mason_lspconfig = require("mason-lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -37,40 +32,42 @@ return {
       end
     })
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
-
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      ["emmet_ls"] = function()
-        -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "javascriptreact", "css", "sass", "scss", "less" },
-        })
-      end,
-      ["lua_ls"] = function()
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        })
-      end,
+    local signs = {
+      [vim.diagnostic.severity.ERROR] = "E ",
+      [vim.diagnostic.severity.WARN]  = "W ",
+      [vim.diagnostic.severity.HINT]  = "H ",
+      [vim.diagnostic.severity.INFO]  = "I ",
+    }
+    vim.diagnostic.config({
+      signs = {
+        text = signs -- Enable signs in the gutter
+      },
+      virtual_text = true,  -- Specify Enable virtual text for diagnostics
+      underline = true,     -- Specify Underline diagnostics
+      update_in_insert = false,  -- Keep diagnostics active in insert mode
     })
 
+    local lspconfig = require("lspconfig")
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local capabilities = cmp_nvim_lsp.default_capabilities()
+
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
+          },
+          completion = {
+            callSnippet = "Replace",
+          },
+        },
+      },
+    })
+
+    lspconfig.cssls.setup({ capabilities = capabilities })
+    lspconfig.html.setup({ capabilities = capabilities })
+    lspconfig.zls.setup({ capabilities = capabilities })
   end
 }
