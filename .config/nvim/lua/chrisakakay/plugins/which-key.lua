@@ -62,6 +62,7 @@ return {
       { "<leader>g", group = "Git" },
       { "<leader>w", group = "Window" },
       { "<leader>a", group = "Harpoon" },
+      { "<leader>r", group = "LSP" },
       -- { "<leader>wt", group = "Tab" },
     })
   end,

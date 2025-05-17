@@ -14,9 +14,9 @@ return {
         end
 
         map("n", "<leader>rs", ":LspRestart<CR>", "Restart LSP") -- mapping to restart lsp if necessary
-        map("n", "<leader>rn", vim.lsp.buf.rename, "Smart rename") -- smart rename
-        map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics") -- show  diagnostics for file
-        map("n", "<leader>d", vim.diagnostic.open_float, "Show line diagnostics") -- show diagnostics for line
+        map("n", "<leader>rr", vim.lsp.buf.rename, "Smart rename") -- smart rename
+        map("n", "<leader>rD", "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics") -- show  diagnostics for file
+        map("n", "<leader>rd", vim.diagnostic.open_float, "Show line diagnostics") -- show diagnostics for line
         map("n", "K", vim.lsp.buf.hover, "Show documentation for what is under cursor") -- show documentation for what is under cursor
 
         map("n", "gD", vim.lsp.buf.declaration, "Go to declaration") -- go to declaration
