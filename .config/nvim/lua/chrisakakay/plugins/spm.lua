@@ -15,6 +15,6 @@ return {
       }
     })
 
-    vim.keymap.set("n", "<leader>pp", ":SPM<CR>", { desc = "Open project manager" })
+    vim.keymap.set("n", "<leader>ss", ":SPM<CR>", { desc = "Open project manager" })
   end,
 }

@@ -83,9 +83,9 @@ local color_map = {
 
 local color_codes = {
   ['-'] = { fg = "#bf616a" }, -- Empty (Red)
-  ['B'] = { fg = "#3b4252" },  -- Black
-  ['G'] = { fg = "#434c5e" },  -- Gray (kind of)
-  ['.'] = { fg = "#d8dee9" },  -- White
+  ['B'] = { fg = "#3b4252" }, -- Black
+  ['G'] = { fg = "#434c5e" }, -- Gray (kind of)
+  ['.'] = { fg = "#d8dee9" }, -- White
   ['Y'] = { fg = "#ebcb8b" }, -- Yellow
   ['P'] = { fg = "#b48ead" }, -- Puple
   ['D'] = { fg = "#5e81ac" }, -- Dark purple
@@ -107,11 +107,10 @@ return {
 
     dashboard.section.buttons.val = {
       dashboard.button("e", "> New file", "<cmd>ene<CR>"),
-      dashboard.button("SPC ff", "> Find file", "<cmd>Telescope find_files<CR>"),
-      dashboard.button("SPC fr", "> Recent", "<cmd>Telescope oldfiles<CR>"),
-      dashboard.button("SPC wr", "> Restore session", "<cmd>SessionRestore<CR>"),
-      dashboard.button("SPC pp", "> Change project directory", "<cmd>SPM<CR>"),
-      dashboard.button("q", "> Quit", "<cmd>qa<CR>"),
+      dashboard.button("r", "> Recent files", ":Telescope oldfiles<CR>"),
+      dashboard.button("s", "> Change project directory", ":SPM<CR>"),
+      dashboard.button("l", "> Lazy", ":Lazy<CR>"),
+      dashboard.button("q", "> Quit", ":qa<CR>"),
     }
 
     alpha.setup(dashboard.opts)
