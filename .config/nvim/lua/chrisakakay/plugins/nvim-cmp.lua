@@ -2,16 +2,12 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
+    "onsails/lspkind.nvim",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    {
-      "L3MON4D3/LuaSnip",
-      version = "v2.*",
-      -- build = "make install_jsregexp"
-    },
+    { "L3MON4D3/LuaSnip", version = "v2.*", --[[ build = "make install_jsregexp"]] },
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
-    "onsails/lspkind.nvim",
   },
   config = function()
     local cmp = require("cmp")
@@ -49,6 +45,7 @@ return {
       }),
       formatting = {
         format = lspkind.cmp_format({
+          mode = 'text',
           maxwidth = 50,
           ellipsis_char = "...",
         }),

@@ -10,9 +10,12 @@ return {
     harpoon:extend(extensions.builtins.navigate_with_number());
 
     harpoon:setup({
-      global_settings = {
+      settings = {
         save_on_toggle = true,
         save_on_change = true,
+        --key = function()
+        --  return "global"
+        --end,
       },
     })
 
