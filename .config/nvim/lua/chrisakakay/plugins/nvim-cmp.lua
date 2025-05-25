@@ -36,6 +36,14 @@ return {
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<Tab>"] = cmp.mapping.confirm({ select = false }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          -- if cmp.visible() then
+          if luasnip.locally_jumpable(1) then
+            luasnip.jump(1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
       },
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
