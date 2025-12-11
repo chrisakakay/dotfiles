@@ -1,0 +1,1 @@
+nvim config dir on windows: `c:\Users\<USERNAME>\AppData\Local\nvim\`

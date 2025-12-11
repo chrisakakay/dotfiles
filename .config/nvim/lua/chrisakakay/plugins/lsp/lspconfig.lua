@@ -47,27 +47,35 @@ return {
       update_in_insert = false,  -- Keep diagnostics active in insert mode
     })
 
-    local lspconfig = require("lspconfig")
+    --local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          completion = {
-            callSnippet = "Replace",
-          },
-        },
-      },
-    })
+    --lspconfig.lua_ls.setup({
+    --  capabilities = capabilities,
+    --  settings = {
+    --    Lua = {
+    --      -- make the language server recognize "vim" global
+    --      diagnostics = {
+    --        globals = { "vim" },
+    --      },
+    --      completion = {
+    --        callSnippet = "Replace",
+    --      },
+    --    },
+    --  },
+    --})
 
-    lspconfig.cssls.setup({ capabilities = capabilities })
-    lspconfig.html.setup({ capabilities = capabilities })
-    lspconfig.zls.setup({ capabilities = capabilities })
+    --lspconfig.cssls.setup({ capabilities = capabilities })
+    --lspconfig.html.setup({ capabilities = capabilities })
+    --lspconfig.zls.setup({ capabilities = capabilities })
+
+    vim.lsp.config("cssls", { capabilities = capabilities })
+    vim.lsp.config("html", { capabilities = capabilities })
+    vim.lsp.config("zls", { capabilities = capabilities })
+
+    vim.lsp.enable({"cssls"})
+    vim.lsp.enable({"html"})
+    vim.lsp.enable({"zls"})
   end
 }
