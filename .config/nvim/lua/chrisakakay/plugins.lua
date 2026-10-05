@@ -7,6 +7,7 @@ vim.pack.add({
   { src = "https://github.com/stevearc/oil.nvim" },
   { src = "https://github.com/saghen/blink.lib" },
   { src = "https://github.com/saghen/blink.cmp" },
+  { src = "https://github.com/ibhagwan/fzf-lua" },
 })
 
 vim.cmd.colorscheme "catppuccin-mocha"
@@ -74,7 +75,7 @@ require("oil").setup({
 })
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<Space>-", "<CMD>Oil --float<CR>", { desc = "Open parent directory as floating window" })
+vim.keymap.set("n", "<leader>-", "<CMD>Oil --float<CR>", { desc = "Open parent directory as floating window" })
 
 local cmp = require("blink.cmp")
 cmp.build():pwait()
@@ -82,3 +83,10 @@ cmp.setup({
   keymap = { preset = 'enter' },
   appearance = { nerd_font_variant = 'mono' },
 })
+
+vim.keymap.set("n", "<leader>ff", [[<Cmd>lua require"fzf-lua".files()<CR>]], { desc = "Open fzf files" })
+vim.keymap.set("n", "<leader>fb", [[<Cmd>lua require"fzf-lua".buffers()<CR>]], { desc = "Open fzf buffers" })
+vim.keymap.set("n", "<leader>fg", [[<Cmd>lua require"fzf-lua".global()<CR>]], { desc = "Open fzf globals" })
+
+
+
